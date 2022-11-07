@@ -10,3 +10,14 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 */
+
+//Function to hide the home page of the quiz when the 'Play' button is clicked
+/* startQuiz() {
+    var x = document.getElementsByClassName("container");
+    if (x.style.display === "none") {
+        x.style.display = "flex";
+    } else {
+        x.style.display = "none";
+    }
+}
+*/
