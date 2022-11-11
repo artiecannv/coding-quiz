@@ -12,7 +12,11 @@ No need to install anything for this application
 
 When initally loading the page, the user is presented with two options: 'Play', and 'High Scores'. Click the 'Play' button to start the quiz, which has a timer and keeps track of the score of the users game. Click the "High Score' button to see the scores that are saved to the local storage.
 
-//Screenshots here
+<img src="./images/coding-quiz.png" alt="photo-of-landing-page">
+
+## Deployed Site URL
+
+https://artiecannv.github.io/coding-quiz/
 
 ## Credits
 
