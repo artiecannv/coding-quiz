@@ -135,11 +135,13 @@ const submitBtn = document.getElementById('submit');
 let currentQuiz = 0;
 let currentScore = 0;
 
-loadQuiz();
+
 
 function loadQuiz() {
 
-    deselectAnswers();
+    document.getElementById('homepage').classList.toggle("hidden");
+
+
 
     const currentQuizData = quizData[currentQuiz];
 
@@ -148,7 +150,10 @@ function loadQuiz() {
     b_text.innerText = currentQuizData.b;
     c_text.innerText = currentQuizData.c;
     d_text.innerText = currentQuizData.d;
+
+    console.log('test');
 };
+
 
 function deselectAnswers() {
     answerEls.forEach(answerEls => answerEls.checked = false);
@@ -163,24 +168,3 @@ function getSelected() {
     })
     return answer
 }
-
-submitBtn.addEventListener('click', () => {
-    const answer = getSelected()
-    if (answer) {
-        if (answer === quizData[currentQuiz].correct) {
-            score++
-        }
-
-        currentQuiz++;
-
-        if (currentQuiz < quizData.length) {
-            loadQuiz()
-        } else {
-            quiz.innerHTML = "
-            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-            
-            <button onclick="location.reload()">Reload</button>"
-        }
-
-    }
-})

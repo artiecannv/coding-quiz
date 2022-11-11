@@ -14,11 +14,11 @@
 </head>
 <!--Landing Page, with 'High Scores' and 'Play' buttons-->
 <body>
-    <div class="container">
+    <div class="container" id="homepage">
         <div id="home" class="flex-column flex-center">
             <h1>HTML, CSS, and JavaScript Quiz</h1>
             <h2>Think you can beat the high score?</h2>
-            <button onclick="startQuiz()" class="btn">Play!?</button>
+            <button onclick="loadQuiz()" class="btn">Play!?</button>
             <button class="btn" id="hs-btn">High Scores!</button>
         </div>
     </div>
@@ -52,5 +52,7 @@
             <button id="submit">Submit</button>
         </div>
     </div>
+
+    <script src="./script.js"></script>
 </body>
 </html>
