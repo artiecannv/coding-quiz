@@ -11,18 +11,6 @@ WHEN the game is over
 THEN I can save my initials and score
 */
 
-//Function to hide the home page of the quiz when the 'Play' button is clicked
-/* function startQuiz() {
-    var x = document.getElementsByClassName("container");
-    if (x.style.display === "none") {
-        x.style.display = "flex";
-    } else {
-        x.style.display = "none";
-    }
-};
-
-startQuiz(); */
-
 //Questions and Answers
 const quizData = [
   {
@@ -141,13 +129,15 @@ let currentScore = 0;
 let timeLeft = 60;
 
 function startQuiz() {
+  quiz.style.display = "block";
+
     document.getElementById("homepage").classList.toggle("hidden");
     countdown();
     loadQuiz();
 }
 
 function loadQuiz() {
-  
+
   const currentQuizData = quizData[currentQuiz];
 
   questionEl.innerText = currentQuizData.question;
@@ -185,7 +175,7 @@ function submitAnswer() {
   }
 
   if (answer === quizData[currentQuiz].correct) {
-    
+    scoreIncrease();
   }
   currentQuiz++;
   loadQuiz();
@@ -199,6 +189,15 @@ function countdown() {
     } else {timer.textContent = timeLeft} 
   }, 1000);
 }
+
+
+
+function scoreIncrease() {
+  currentScore++;
+  deselectAnswers();
+  loadQuiz();
+};
+
 
 
 submitBtn.addEventListener("click", submitAnswer);

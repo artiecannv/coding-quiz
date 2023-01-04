@@ -97,17 +97,18 @@ h2 {
 .quiz-container {
     background-color: rgb(37, 37, 37);
     font-family: 'Press Start 2P', cursive;
-    display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vw;
+    height: 100vh;
     overflow: hidden;
     margin: 0;
     border-radius: 10px;
+    display: none;
 }
 
 .quiz-header {
     padding: 4rem;
+    
 }
 
 #question {
@@ -147,4 +148,10 @@ ul li label {
     transition: transform 150ms;
     transform: scale(1.03);
     color: white;
+}
+
+#timer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
 }
