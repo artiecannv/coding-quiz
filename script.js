@@ -123,21 +123,22 @@ const c_text = document.getElementById("c_text");
 const d_text = document.getElementById("d_text");
 const submitBtn = document.getElementById("submit");
 const timer = document.getElementById("timer");
+const score = document.getElementById("score");
 
 let currentQuiz = 0;
 let currentScore = 0;
 let timeLeft = 60;
 
+//Function to Start the Quiz
 function startQuiz() {
   quiz.style.display = "block";
-
-    document.getElementById("homepage").classList.toggle("hidden");
-    countdown();
-    loadQuiz();
+  document.getElementById("homepage").classList.toggle("hidden");
+  countdown();
+  loadQuiz();
 }
 
+//Function to load the Quiz Questions
 function loadQuiz() {
-
   const currentQuizData = quizData[currentQuiz];
 
   questionEl.innerText = currentQuizData.question;
@@ -146,6 +147,7 @@ function loadQuiz() {
   c_text.innerText = currentQuizData.c;
   d_text.innerText = currentQuizData.d;
 
+  deselectAnswers();
   console.log("test");
 }
 
@@ -163,6 +165,7 @@ function getSelected() {
   return answer;
 }
 
+// Function that allows the submit button to be pushed
 function submitAnswer() {
   let answerEls = document.getElementsByName("answer");
   let answer;
@@ -176,28 +179,58 @@ function submitAnswer() {
 
   if (answer === quizData[currentQuiz].correct) {
     scoreIncrease();
+  } else {
+    scoreDecrease();
   }
   currentQuiz++;
   loadQuiz();
+  console.log(currentScore);
 }
 
+
+//Timer Function
 function countdown() {
   var timeInterval = setInterval(function () {
     timeLeft--;
     if (timeLeft <= 0) {
       clearInterval(timeInterval);
-    } else {timer.textContent = timeLeft} 
+      endQuiz();
+    } else {
+      timer.textContent = timeLeft;
+    }
   }, 1000);
 }
 
-
-
+//Increasing the score when answerering a question correctly
 function scoreIncrease() {
   currentScore++;
-  deselectAnswers();
-  loadQuiz();
-};
+  
+}
 
+function scoreDecrease() {
+  timeLeft -= 10;
+  currentScore--;
+  document.getElementById("timer").style.color = "red";
 
+  setTimeout(function () {
+    document.getElementById("timer").style.color = "rgb(15, 105, 15)";
+  }, 1000)
+ 
+}
+
+function endQuiz() {
+  quiz.style.display = "none";
+  displayScore();
+}
+
+function displayScore() {
+  
+  score.style.display = "block";
+  score.textContent = "Your score was:" + " " + (currentScore * 100);
+}
+
+function hiScores() {
+
+}
 
 submitBtn.addEventListener("click", submitAnswer);

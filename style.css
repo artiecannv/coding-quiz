@@ -155,3 +155,9 @@ ul li label {
     justify-content: flex-end;
     padding: 10px;
 }
+
+#score {
+    display: none;
+    text-align: center;
+    margin-top: 50vh;
+}
